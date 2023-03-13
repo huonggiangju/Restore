@@ -2,9 +2,12 @@ import { createTheme, CssBaseline, ThemeProvider, Typography } from '@mui/materi
 import { Container } from '@mui/system';
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Catalog from '../../features/catalog/Catalog';
 import { Product } from '../models/product';
 import Header from './Header';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -27,10 +30,11 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-    <CssBaseline/> 
-      <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
+      <ToastContainer position="bottom-right" hideProgressBar theme='colored' /> 
+      <CssBaseline/> 
+        <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
       <Container>
-        <Catalog />
+        <Outlet/>
       </Container>
       
     </ThemeProvider>
